@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="atm">
+    <output-path>$PROJECT_DIR$/out/artifacts/atm</output-path>
+    <root id="archive" name="atm.war">
+      <element id="artifact" artifact-name="virtualATM:war exploded2" />
+    </root>
+  </artifact>
+</component>
