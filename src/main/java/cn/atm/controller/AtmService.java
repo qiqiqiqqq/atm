@@ -24,7 +24,7 @@ public class AtmService {
 	}
 	
 
-	public void withdraw(double money, String cardId, String atmId) {
+	public void withdraw(double money, String cardId) {
 		try {
 			JdbcUtils.beginTransaction();
 			bankCardDao.updateBalance(money, cardId);
@@ -38,14 +38,7 @@ public class AtmService {
 		}
 	}
 
-	/**
-	 * 存款(事务操作)
-	 * ATM存款箱+money
-	 * BankCard+money
-	 * @param money
-	 * @param cardId
-	 * @param atmId
-	 */
+
 	public void deposit(double money, String cardId) {
 		try {
 			JdbcUtils.beginTransaction();
