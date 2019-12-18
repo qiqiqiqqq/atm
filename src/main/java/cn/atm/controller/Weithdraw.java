@@ -20,7 +20,7 @@ public class Weithdraw extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         BankCard bankCard = (BankCard) req.getSession().getAttribute("session_bankCard");
-
+         AtmService atmService = new AtmService();
         if (bankCard == null) {
             resp.sendRedirect("views/login.jsp");
             return;
@@ -58,13 +58,13 @@ public class Weithdraw extends HttpServlet {
 
 
         try {
-
+            atmService.withdraw(outMoney, bankCard.getCardId());
             bankCard.setCardBalance(bankCard.getCardBalance()-outMoney);
 
 
             req.getSession().setAttribute("seesion_bankCard", bankCard);
 
-                AtmService atmService = new AtmService();
+
             atmService.record(bankCard.getCardId(),"取款业务", -1*outMoney, "取款:" + money);
 
             req.setAttribute("msg", "取款 " + money +"元");
